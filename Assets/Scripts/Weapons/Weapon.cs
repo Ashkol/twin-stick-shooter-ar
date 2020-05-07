@@ -8,7 +8,19 @@ public class Weapon : MonoBehaviour
     public GameObject weaponModel;
     public Transform bulletOriginPoint;
 
+    public enum WeaponType
+    {
+        Pistol,
+        Shotgun,
+        SMG,
+        AutomaticRifle,
+        Minigun,
+        RPG
+    }
+
     int ammoLeftInClip;
+
+
 
     void Start()
     {

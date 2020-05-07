@@ -14,16 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public BulletPool bulletPool;
     public Weapon[] weapons = new Weapon[6];
 
-    public enum WeaponType
-    {
-        Pistol,
-        Shotgun,
-        SMG,
-        AutomaticRifle,
-        Minigun,
-        RPG
-    }
-    public WeaponType currentWeaponType;
+    public Weapon.WeaponType currentWeaponType;
     private Weapon currentWeapon;
 
     Rigidbody rgbody;
@@ -73,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             currentWeapon.gameObject.SetActive(false);
         currentWeapon = weapons[i];
         currentWeapon.gameObject.SetActive(true);
-        currentWeaponType = (WeaponType)i;
+        currentWeaponType = (Weapon.WeaponType)i;
         millisecondsBetweenShots = 60 * 1000 / currentWeapon.stats.rateOfFire;
         animator.SetInteger("WeaponType_int", weaponsIDs[(int)currentWeaponType]);
         animator.SetBool("FullAuto_b", true);

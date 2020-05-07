@@ -46,8 +46,5 @@ public class Bullet : ObjectPoolItem
             var enemy = other.gameObject.GetComponent<Enemy>();
             enemy.ReceiveDamage(damage);
         }
-
-       
-
     }
 }

@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 296516821224603617}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 100
-  speed: 6
+  speed: 10
   cam: {fileID: 0}
   weaponHolder: {fileID: 296516821105458646}
   bulletPool: {fileID: 1718319814832831649}
