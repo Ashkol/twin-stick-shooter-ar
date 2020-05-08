@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a1d2b4ed712c34c8827a47e3681b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
   weaponPickUps:
-  - {fileID: 4637168769188151898, guid: e49ba86d16ec6ce4180c272c252bef3c, type: 3}
   - {fileID: 7384413625473954205, guid: 26f3432a7c6ae5c49b357dcb34120402, type: 3}
   - {fileID: 6939843386976024129, guid: c761203f99891d64fb9de98ea915f5a1, type: 3}
   - {fileID: 5839363647472599368, guid: 866ec0ad30116dc4dbf73ef1a2469d21, type: 3}

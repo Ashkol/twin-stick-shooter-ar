@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
   name: 225
-  rateOfFire: 700
+  rateOfFire: 450
   clipCapacity: 30
-  damage: 20
+  damage: 15
   accuracyOffset: 0.02
   bulletsShotAtOnce: 1
   rotationEulerAngles: {x: -57, y: 92, z: 90}

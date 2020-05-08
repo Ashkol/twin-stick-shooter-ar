@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 
-public abstract class ObjectPoolItem : MonoBehaviour
+public class ObjectPoolItem : MonoBehaviour
 {
-    BulletPool pool;
-    public BulletPool Pool
+    public ObjectPool pool;
+
+    public virtual void Disable()
     {
-        private get => pool;
-        set { pool = value; }
+        gameObject.SetActive(false);
     }
 
-    public abstract void Disable();
-    public abstract void Enable();
-    public abstract void SetUp(Vector3 spawnPosition, Quaternion spawnRotation);
+    public virtual void Enable()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public virtual void SetUp(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        Debug.Log($"Spawn position: {spawnPosition}");
+        transform.position = spawnPosition;
+        transform.rotation = spawnRotation;
+    }
 }

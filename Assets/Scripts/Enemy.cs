@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : ObjectPoolItem
 {
+    int maxHealth;
     public int health = 50;
     public float speed;
     public int damage;
@@ -16,8 +17,10 @@ public class Enemy : MonoBehaviour
     float colorChangeTime = 0.5f;
     Material material; 
 
-    void Start()
+    void Awake()
     {
+        maxHealth = health;
+
         if (player == null)
             player = FindObjectOfType<PlayerMovement>().transform;
         agent = GetComponent<NavMeshAgent>();
@@ -56,7 +59,15 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        pool.Release(this);
+        Disable();
+    }
+
+    public override void SetUp(Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        base.SetUp(spawnPosition, spawnRotation);
+        health = maxHealth;
+        colorChangeTimeLeft = 0;
     }
 
 

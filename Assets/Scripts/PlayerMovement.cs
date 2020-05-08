@@ -68,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
         millisecondsBetweenShots = 60 * 1000 / currentWeapon.stats.rateOfFire;
         animator.SetInteger("WeaponType_int", weaponsIDs[(int)currentWeaponType]);
         animator.SetBool("FullAuto_b", true);
+        currentWeapon.ResetAmmoInClip();
+        AmmoUIPanel.instance.Refresh(currentWeapon);
         //stopwatch.Resstart();
     }
 
@@ -106,12 +108,20 @@ public class PlayerMovement : MonoBehaviour
             shootDir = cam.localToWorldMatrix * shootDir;
             shootDir = (new Vector3(shootDir.x, 0f, shootDir.z)).normalized;
             rgbody.MoveRotation(Quaternion.LookRotation(shootDir, Vector3.up));
-            if (stopwatch.ElapsedMilliseconds >= millisecondsBetweenShots)
+            if (currentWeapon.AmmoLeftInClip > 0)
             {
-                currentWeapon.Shoot(shootDir, bulletPool);
-                //bulletPool.Pull();
-                stopwatch.Restart();
+                if (stopwatch.ElapsedMilliseconds >= millisecondsBetweenShots)
+                {
+                    currentWeapon.Shoot(shootDir, bulletPool);
+                    //bulletPool.Pull();
+                    stopwatch.Restart();
+                }
             }
+            else
+            {
+                SetWeapon(0);
+            }
+            
         }
         else
         {

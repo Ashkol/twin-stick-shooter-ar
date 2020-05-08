@@ -19,8 +19,11 @@ public class Weapon : MonoBehaviour
     }
 
     int ammoLeftInClip;
-
-
+    public int AmmoLeftInClip
+    {
+        get { return ammoLeftInClip; }
+        private set { ammoLeftInClip = value; }
+    }
 
     void Start()
     {
@@ -32,16 +35,20 @@ public class Weapon : MonoBehaviour
 
     public void Shoot(Vector3 shootDir, BulletPool bulletPool)
     {
-        //var bullet = bulletPool.Pull();
-        //bullet.damage = stats.damage;
-        //bullet.SetUp(bulletOriginPoint.position, Quaternion.LookRotation(shootDir, Vector3.up));
         for (int i = 0; i < stats.bulletsShotAtOnce; i++)
         {
-            Debug.Log("X");
-            var bullet = bulletPool.Pull();
-            bullet.damage = stats.damage;
-            bullet.SetUp(bulletOriginPoint.position, 
-                         Quaternion.LookRotation(OffsetRandom(shootDir, stats.accuracyOffset), Vector3.up));
+            try
+            {
+                var bullet = bulletPool.Acquire() as Bullet;
+                bullet.damage = stats.damage;
+                bullet.SetUp(bulletOriginPoint.position, Quaternion.LookRotation(OffsetRandom(shootDir, stats.accuracyOffset), Vector3.up));
+                ammoLeftInClip -= 1;
+                AmmoUIPanel.instance.Refresh(this);
+            }
+            catch (System.Exception ex)
+            {
+
+            }
         }
     }
 
@@ -50,5 +57,10 @@ public class Weapon : MonoBehaviour
         return new Vector3(vec.x + Random.Range(-value, value),
                             vec.y,
                             vec.z + Random.Range(-value, value));
+    }
+
+    public void ResetAmmoInClip()
+    {
+        AmmoLeftInClip = stats.clipCapacity;
     }
 }

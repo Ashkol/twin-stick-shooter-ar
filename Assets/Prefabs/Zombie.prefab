@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6686872370897428229}
   - component: {fileID: 3538445688906020429}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,9 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503ff2b02eebc144aa2272b51cd11561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
   health: 50
-  speed: 0
-  damage: 0
+  speed: 5
+  damage: 5
   player: {fileID: 0}
 --- !u!136 &6686872370897428229
 CapsuleCollider:

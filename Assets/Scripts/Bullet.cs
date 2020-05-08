@@ -18,22 +18,10 @@ public class Bullet : ObjectPoolItem
         trail = GetComponentInChildren<TrailRenderer>();
     }
 
-    public override void Disable()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public override void Enable()
-    {
-        gameObject.SetActive(true);
-    }
-
     public override void SetUp(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        Debug.Log($"Spawn position: {spawnPosition}") ;
-        transform.position = spawnPosition;
-        transform.rotation = spawnRotation;
-        rgbody.velocity = transform.forward * speed;
+        base.SetUp(spawnPosition, spawnRotation);
+        rgbody.velocity = transform.forward * speed;;
         trail.Clear();
     }
 

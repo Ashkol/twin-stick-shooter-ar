@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponCrate : MonoBehaviour
+public class WeaponCrate : ObjectPoolItem
 {
     public WeaponCollectable[] weaponPickUps = new WeaponCollectable[5];
 
@@ -11,7 +11,16 @@ public class WeaponCrate : MonoBehaviour
         if (other.CompareTag("DamageSource"))
         {
             SpawnRandomWeapon();
-            Destroy(gameObject);
+            
+            if (pool != null)
+            {
+                Disable();
+                pool.Release(this);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
