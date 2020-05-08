@@ -853,6 +853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296516821224603618}
   - component: {fileID: 296516821224603644}
+  - component: {fileID: 164288204530830508}
   - component: {fileID: 296516821224603619}
   - component: {fileID: 296516821224603617}
   m_Layer: 8
@@ -890,7 +891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbe4ae52becccb4c9e9ca552f22bec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 100
   speed: 10
   cam: {fileID: 0}
   weaponHolder: {fileID: 296516821105458646}
@@ -903,6 +903,20 @@ MonoBehaviour:
   - {fileID: 1780874350945574436, guid: ee604174224857f459a31ec8337989fb, type: 3}
   - {fileID: 1780874350945574436, guid: ee604174224857f459a31ec8337989fb, type: 3}
   currentWeaponType: 0
+--- !u!114 &164288204530830508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296516821224603645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca79973986b223c41b3d3b9df75fc9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 0}
+  maxHealth: 100
 --- !u!54 &296516821224603619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -976,8 +990,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d6b1e13cab3244aa85f14f650921ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 886889385753975626, guid: cccb417c006ec3e41bdda20db83fe89b, type: 3}
+  poolItem: {fileID: 0}
   capacity: 30
+  unusedObjects: []
+  objectsInGame: []
 --- !u!1001 &831645727600823723
 PrefabInstance:
   m_ObjectHideFlags: 0

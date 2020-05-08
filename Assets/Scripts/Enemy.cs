@@ -24,6 +24,7 @@ public class Enemy : ObjectPoolItem
         if (player == null)
             player = FindObjectOfType<PlayerMovement>().transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
         animator = GetComponentInChildren<Animator>();
         material = GetComponentInChildren<SkinnedMeshRenderer>().material;
     }
@@ -68,6 +69,14 @@ public class Enemy : ObjectPoolItem
         base.SetUp(spawnPosition, spawnRotation);
         health = maxHealth;
         colorChangeTimeLeft = 0;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            var health = collision.gameObject.GetComponent<PlayerHealth>();
+            health.ReceiveDamage(damage);
+        }
     }
 
 

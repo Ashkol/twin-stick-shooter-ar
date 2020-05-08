@@ -5,8 +5,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Tooltip("Bullets per minute")]
-    public int rateOfFire = 120;
     public float speed = 20f;
 
     public Transform cam;
@@ -20,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rgbody;
     Animator animator;
     Stopwatch stopwatch;
+    PlayerHealth health;
     float millisecondsBetweenShots;
 
     int[] weaponsIDs = { 1, 4, 7, 2, 9, 8 };
@@ -29,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rgbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         stopwatch = new Stopwatch();
+        health = GetComponent<PlayerHealth>();
 
         stopwatch.Start();
 
@@ -42,20 +42,19 @@ public class PlayerMovement : MonoBehaviour
             weapon.gameObject.SetActive(false);
         }
 
-        // Instantiate Weapon
         SetWeapon(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         HandleShooting();
-        //UnityEngine.Debug.Log(animator.GetCurrentAnimatorStateInfo.);
     }
 
     void FixedUpdate()
     {
         Move();
+        rgbody.velocity = Vector3.zero;
+        rgbody.angularVelocity = Vector3.zero;
     }
 
     public void SetWeapon(int i)
@@ -66,11 +65,13 @@ public class PlayerMovement : MonoBehaviour
         currentWeapon.gameObject.SetActive(true);
         currentWeaponType = (Weapon.WeaponType)i;
         millisecondsBetweenShots = 60 * 1000 / currentWeapon.stats.rateOfFire;
+
+        // Animation
         animator.SetInteger("WeaponType_int", weaponsIDs[(int)currentWeaponType]);
         animator.SetBool("FullAuto_b", true);
+        
         currentWeapon.ResetAmmoInClip();
         AmmoUIPanel.instance.Refresh(currentWeapon);
-        //stopwatch.Resstart();
     }
 
     private void Move()
@@ -87,11 +88,6 @@ public class PlayerMovement : MonoBehaviour
             if (!animator.GetBool("Shoot_b"))
                 rgbody.MoveRotation(Quaternion.LookRotation(moveDir, Vector3.up));
         }
-    }
-
-    void SetAnimation()
-    {
-
     }
 
     void HandleShooting()

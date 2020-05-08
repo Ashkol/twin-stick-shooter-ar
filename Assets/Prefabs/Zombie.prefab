@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2264687601054237356}
   - component: {fileID: 2264687601054237358}
   - component: {fileID: 2264687601054237359}
-  - component: {fileID: 6686872370897428229}
   - component: {fileID: 3538445688906020429}
   m_Layer: 9
   m_Name: Zombie
@@ -45,7 +44,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.7
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -71,23 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 0}
   health: 50
-  speed: 5
+  speed: 2
   damage: 5
   player: {fileID: 0}
---- !u!136 &6686872370897428229
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2264687601054237357}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.7
-  m_Height: 3.2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!65 &3538445688906020429
 BoxCollider:
   m_ObjectHideFlags: 0
