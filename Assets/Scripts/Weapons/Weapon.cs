@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
         //bulletPool = FindObjectOfType<BulletPool>();
     }
 
-    public void Shoot(Vector3 shootDir, BulletPool bulletPool)
+    public void Shoot(Vector3 shootDir, ObjectPool bulletPool)
     {
         for (int i = 0; i < stats.bulletsShotAtOnce; i++)
         {
@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
             }
             catch (System.Exception ex)
             {
-
+                Debug.LogWarning(ex);
             }
         }
     }
