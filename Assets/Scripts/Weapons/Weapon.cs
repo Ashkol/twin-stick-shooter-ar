@@ -30,11 +30,11 @@ public class Weapon : MonoBehaviour
         ammoLeftInClip = stats.clipCapacity;
         transform.localPosition = stats.positionOffset;
         transform.localRotation = Quaternion.Euler(stats.rotationEulerAngles);
-        //bulletPool = FindObjectOfType<BulletPool>();
     }
 
     public void Shoot(Vector3 shootDir, ObjectPool bulletPool)
     {
+        Debug.Log("SHOT");
         for (int i = 0; i < stats.bulletsShotAtOnce; i++)
         {
             try

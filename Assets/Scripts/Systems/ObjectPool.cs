@@ -9,7 +9,6 @@ public class ObjectPool : MonoBehaviour
 
     public List<ObjectPoolItem> unusedObjects;
     public List<ObjectPoolItem> objectsInGame;
-    //public bool ReachedMaxCapacity() => objectsInGame.Count == capacity;
 
     void Start()
     {
@@ -25,7 +24,6 @@ public class ObjectPool : MonoBehaviour
         {
             var instance = Instantiate(poolItem, transform);
             instance.pool = this;
-            //instance.Disable();
             instance.gameObject.SetActive(false);
             unusedObjects.Add(instance);
         }
@@ -55,7 +53,6 @@ public class ObjectPool : MonoBehaviour
         item.Disable();
         unusedObjects.Add(item);
         objectsInGame.Remove(item);
-        //var item = objectPool.Dequeue();
     }
 
     public void Release(int index)
@@ -64,6 +61,5 @@ public class ObjectPool : MonoBehaviour
         objectsInGame[index].Disable();
         unusedObjects.Add(objectsInGame[index]);
         objectsInGame.RemoveAt(index);
-        //var item = objectPool.Dequeue();
     }
 }

@@ -18,7 +18,7 @@ public class WeaponCollectable : MonoBehaviour, ICollectable
 
     public void PickUp()
     {
-        FindObjectOfType<PlayerMovement>().SetWeapon((int)weapon);
+        FindObjectOfType<PlayerShooting>().SetWeapon((int)weapon);
         Destroy(gameObject);
     }
 
