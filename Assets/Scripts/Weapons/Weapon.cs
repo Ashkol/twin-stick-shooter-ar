@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
                 var bullet = bulletPool.Acquire() as Bullet;
                 bullet.damage = stats.damage;
                 bullet.SetUp(bulletOriginPoint.position, Quaternion.LookRotation(OffsetRandom(shootDir, stats.accuracyOffset), Vector3.up));
-                ammoLeftInClip -= 1;
+                
                 AmmoUIPanel.instance.Refresh(this);
             }
             catch (System.Exception ex)
@@ -50,6 +50,7 @@ public class Weapon : MonoBehaviour
                 Debug.LogWarning(ex);
             }
         }
+        ammoLeftInClip -= 1;
     }
 
     public Vector3 OffsetRandom(Vector3 vec, float value)

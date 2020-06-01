@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
         {
             var item = unusedObjects[0];
             unusedObjects.RemoveAt(0);
-            item.Enable();
+            //item.Enable();
             objectsInGame.Add(item);
             return item;
         }

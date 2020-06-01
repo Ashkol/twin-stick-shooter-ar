@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     [Range(1.0f, 30.0f)] public float spawnTime = 5f;
     public ObjectPool pool;
     public Vector2 spawnOffset;
+    public bool spawnAtStart = false; // start spawning right away
 
     bool isSpawning;
     System.Diagnostics.Stopwatch timer;
@@ -16,6 +17,9 @@ public class Spawner : MonoBehaviour
     {
         timer = new System.Diagnostics.Stopwatch();
         timer.Start();
+
+        if(spawnAtStart)
+            isSpawning = true;
     }
 
     private void Update()
@@ -30,13 +34,12 @@ public class Spawner : MonoBehaviour
     {
         if (pool != null)
         {
-            for (var i = 0; i < (burstSpawning ? spawnNumber : 1); i += (burstSpawning ? spawnNumber : 1))
+            for (var i = 0; i < (burstSpawning ? spawnNumber : 1); i++)
             {
                 if (pool.objectsInGame.Count < pool.capacity)
                 {
                     var obj = pool.Acquire();
-                    obj.SetUp(transform.position + new Vector3(Random.Range(-spawnOffset.x, spawnOffset.x), 0, Random.Range(-spawnOffset.y, spawnOffset.y)),
-                              Quaternion.identity);
+                    obj.SetUp(transform.position + new Vector3(Random.Range(-spawnOffset.x, spawnOffset.x), 0, Random.Range(-spawnOffset.y, spawnOffset.y)), Quaternion.identity);
                     //Instantiate(spawnedObject, transform.position, Quaternion.identity);
                 }
             }
