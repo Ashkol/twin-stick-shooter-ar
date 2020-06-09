@@ -66,6 +66,8 @@ public class Enemy : ObjectPoolItem
 
     void Die()
     {
+        if (ScoreManager.scoreManager != null)
+            ScoreManager.scoreManager.Increment();
         pool.Release(this);
         Disable();
     }

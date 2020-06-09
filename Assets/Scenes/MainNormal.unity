@@ -7587,6 +7587,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7223696094898244123, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223696094898244123, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223696094898244123, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223696094898244123, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223696094898244123, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8735350614229656661, guid: 8b80331cb7f67f449bef9551cea169d0,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7772,6 +7797,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2931088302790578256}
+    - target: {fileID: 9161915487709588995, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Score: 0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b80331cb7f67f449bef9551cea169d0, type: 3}
 --- !u!114 &2046876178 stripped

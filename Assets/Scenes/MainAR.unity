@@ -6655,6 +6655,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1094428247}
+    - target: {fileID: 9161915487709588995, guid: 8b80331cb7f67f449bef9551cea169d0,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Score: 0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b80331cb7f67f449bef9551cea169d0, type: 3}
 --- !u!114 &993611105632637705 stripped
