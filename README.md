@@ -3,6 +3,7 @@ In this game player defends against hordes of zombies. Crucial feature of the ga
 Two game modes
 - AR Mode
 - Regular Mode
+\
 ![Regular Mode](BUILD_VIDEO/img1.jpg)
 ![AR Mode](BUILD_VIDEO/img2.jpg)
 ![AR Mode](BUILD_VIDEO/img3.jpg)
