@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Enemy : ObjectPoolItem
 {
+    const float minTimeBetweenDamage = 1.5f;
+    float lastDamageTime;
+
     int maxHealth;
     public int health = 50;
     public float speed;
@@ -19,6 +22,7 @@ public class Enemy : ObjectPoolItem
 
     void Awake()
     {
+        speed = LevelManager.currentZombieSpeed;
         maxHealth = health;
 
         if (player == null)
@@ -27,6 +31,8 @@ public class Enemy : ObjectPoolItem
         agent.speed = speed;
         animator = GetComponentInChildren<Animator>();
         material = GetComponentInChildren<SkinnedMeshRenderer>().material;
+
+
     }
 
     void Update()
@@ -60,6 +66,8 @@ public class Enemy : ObjectPoolItem
 
     void Die()
     {
+        if (ScoreManager.scoreManager != null)
+            ScoreManager.scoreManager.Increment();
         pool.Release(this);
         Disable();
     }
@@ -69,15 +77,16 @@ public class Enemy : ObjectPoolItem
         base.SetUp(spawnPosition, spawnRotation);
         health = maxHealth;
         colorChangeTimeLeft = 0;
+        speed = LevelManager.currentZombieSpeed;
+        agent.speed = speed;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && Time.time - lastDamageTime > minTimeBetweenDamage)
         {
             var health = collision.gameObject.GetComponent<PlayerHealth>();
             health.ReceiveDamage(damage);
+            lastDamageTime = Time.time;
         }
     }
-
-
 }

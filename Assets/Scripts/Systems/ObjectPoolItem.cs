@@ -16,8 +16,9 @@ public class ObjectPoolItem : MonoBehaviour
 
     public virtual void SetUp(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        Debug.Log($"Spawn position: {spawnPosition}");
+        //Debug.Log($"Spawn position: {spawnPosition}");
         transform.position = spawnPosition;
         transform.rotation = spawnRotation;
+        Enable();
     }
 }

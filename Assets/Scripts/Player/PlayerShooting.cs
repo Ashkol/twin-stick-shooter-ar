@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -13,10 +11,11 @@ public class PlayerShooting : MonoBehaviour
 
     public Weapon.WeaponType currentWeaponType;
     Weapon currentWeapon;
-    float millisecondsBetweenShots;
     Animator animator;
-    Stopwatch stopwatch;
     Rigidbody rgbody;
+
+    float timeBetweenShots;
+    float lastShotTime;
 
     int[] weaponsIDs = { 1, 4, 7, 2, 9, 8 };
 
@@ -24,14 +23,13 @@ public class PlayerShooting : MonoBehaviour
     {
         rgbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        stopwatch = new Stopwatch();
-        stopwatch.Start();
         foreach (var weapon in weapons)
         {
             weapon.gameObject.SetActive(false);
         }
 
         SetWeapon(0);
+        lastShotTime = Time.time;
     }
 
     public void SetWeapon(int i)
@@ -41,7 +39,7 @@ public class PlayerShooting : MonoBehaviour
         currentWeapon = weapons[i];
         currentWeapon.gameObject.SetActive(true);
         currentWeaponType = (Weapon.WeaponType)i;
-        millisecondsBetweenShots = 60 * 1000 / currentWeapon.stats.rateOfFire;
+        timeBetweenShots = 60f / currentWeapon.stats.rateOfFire;
 
         // Animation
         animator.SetInteger("WeaponType_int", weaponsIDs[(int)currentWeaponType]);
@@ -66,15 +64,18 @@ public class PlayerShooting : MonoBehaviour
             rgbody.MoveRotation(Quaternion.LookRotation(shootDir, Vector3.up));
             if (currentWeapon.AmmoLeftInClip > 0)
             {
-                if (stopwatch.ElapsedMilliseconds >= millisecondsBetweenShots)
+                if (/*stopwatch.ElapsedMilliseconds >= millisecondsBetweenShots*/ Time.time - lastShotTime > timeBetweenShots)
                 {
                     currentWeapon.Shoot(shootDir, bulletPool);
-                    stopwatch.Restart();
+                    lastShotTime = Time.time;
                 }
             }
             else
             {
-                SetWeapon(0);
+                //SetWeapon(0);
+                //lastShotTime = Time.time + 1f;
+                lastShotTime = Time.time;
+                currentWeapon.ResetAmmoInClip();
             }
 
         }

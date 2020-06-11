@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shotgun
   rateOfFire: 90
-  clipCapacity: 2
+  clipCapacity: 8
   damage: 20
   accuracyOffset: 0.1
   bulletsShotAtOnce: 5
